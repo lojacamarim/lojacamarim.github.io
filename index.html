@@ -1095,20 +1095,22 @@
         const cartWhatsAppBtn = document.getElementById('cartWhatsAppBtn');
         
         // Ícones para cada categoria
-        const categoryIcons = {
-            'Shoes': 'fas fa-shoe-prints',
-            'Bags': 'fas fa-shopping-bag',
-            'Belts': 'fas fa-grip-lines',
-            'Activewear': 'fas fa-tshirt'
-        };
+const categoryIcons = {
+    'Shoes': 'fas fa-shoe-prints',
+    'Bags': 'fas fa-shopping-bag',
+    'Belts': 'fas fa-grip-lines',
+    'Activewear': 'fas fa-tshirt',
+    'Clothing': 'fas fa-tshirt' // Ou outro ícone que preferir
+};
         
         // Nomes em português para as categorias
-        const categoryNames = {
-            'Shoes': 'Calçados',
-            'Bags': 'Bolsas',
-            'Belts': 'Cintos',
-            'Activewear': 'Roupas Esportivas'
-        };
+const categoryNames = {
+    'Shoes': 'Calçados',
+    'Bags': 'Bolsas',
+    'Belts': 'Cintos',
+    'Activewear': 'Roupas Esportivas',
+    'Clothing': 'Roupas Casuais' // Adicione esta linha
+};
         
         // Função para obter os caminhos das imagens baseado no ID do produto
         function getProductImagePaths(product) {
