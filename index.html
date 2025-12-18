@@ -62,17 +62,14 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
         }
 
-        .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .logo-icon {
-            color: var(--primary-color);
-            font-size: 2rem;
+        .logo-image {
+            height: 50px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            transition: all 0.3s ease;
         }
 
         .cart-icon {
@@ -846,7 +843,14 @@
             scroll-behavior: smooth;
         }
 
-        /* Responsividade */
+        /* Responsividade para a imagem do logo */
+        @media (max-width: 1024px) { /* Notebook/Laptop */
+            .logo-image {
+                height: 45px;
+                max-width: 180px;
+            }
+        }
+
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: row; /* Mantém em linha */
@@ -856,6 +860,11 @@
             
             .logo {
                 flex-grow: 1;
+            }
+            
+            .logo-image {
+                height: 40px;
+                max-width: 160px;
             }
             
             .cart-icon {
@@ -926,6 +935,11 @@
         }
 
         @media (max-width: 480px) {
+            .logo-image {
+                height: 35px;
+                max-width: 140px;
+            }
+            
             .products-grid {
                 grid-template-columns: 1fr;
             }
@@ -934,10 +948,6 @@
                 font-size: 1rem;
                 padding: 10px;
                 gap: 5px;
-            }
-            
-            .logo h1 {
-                font-size: 1.5rem;
             }
             
             .cart-icon {
@@ -1027,10 +1037,8 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-store logo-icon"></i>
-                    <h1>Camarim</h1>
-                </div>
-                <div class="header-info">
+                    <!-- Logo substituído por imagem -->
+                    <img src="logo-camarim.png" alt="Camarim" class="logo-image">
                 </div>
                 <div class="cart-icon" id="openCart">
                     <i class="fas fa-shopping-cart"></i>
