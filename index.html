@@ -838,6 +838,80 @@
             color: var(--primary-color);
         }
 
+        /* Adicione ao final do bloco de CSS existente */
+
+/* Estilos para o rodapé atualizado */
+.footer-logo img {
+    max-width: 200px;
+    height: auto;
+}
+
+.payment-methods {
+    margin: 25px 0;
+}
+
+.payment-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.payment-icon {
+    width: 50px;
+    height: 32px;
+    background-color: white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    transition: transform 0.3s ease;
+}
+
+.payment-icon:hover {
+    transform: translateY(-3px);
+}
+
+.payment-icon img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Responsividade para o rodapé */
+@media (max-width: 768px) {
+    .footer-logo img {
+        max-width: 160px;
+    }
+    
+    .payment-icons {
+        gap: 10px;
+    }
+    
+    .payment-icon {
+        width: 45px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-logo img {
+        max-width: 140px;
+    }
+    
+    .payment-icons {
+        gap: 8px;
+    }
+    
+    .payment-icon {
+        width: 40px;
+        height: 25px;
+    }
+}
+
         /* Scroll suave */
         html {
             scroll-behavior: smooth;
@@ -1091,15 +1165,70 @@
     </div>
 
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">Camarim</div>
-                <p>Catálogo online com as melhores ofertas em calçados, bolsas, roupas e acessórios.</p>
-                <p>Entre em contato via WhatsApp para fazer seu pedido!</p>
-                <p style="margin-top: 20px; font-size: 0.9rem;">Camarim © 2025 - Todos os direitos reservados.</p>
+    <div class="container">
+        <div class="footer-content">
+            <!-- Logo do rodapé -->
+            <div class="footer-logo">
+                <img src="logo-camarim.png" alt="Camarim" class="logo-image" style="height: 60px; width: auto;">
             </div>
+            
+            <!-- Texto descritivo -->
+            <p>Catálogo online com as melhores ofertas em calçados, bolsas, roupas e acessórios.</p>
+            <p>Entre em contato via WhatsApp para fazer seu pedido!</p>
+            
+            <!-- Formas de pagamento -->
+            <div class="payment-methods" style="margin: 25px 0;">
+                <h4 style="color: var(--primary-color); margin-bottom: 15px; font-size: 1.1rem;">Formas de pagamento</h4>
+                <div class="payment-icons" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 600px; margin: 0 auto;">
+                    <!-- Visa -->
+                    <div class="payment-icon" style="width: 50px; height: 32px; background-color: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; padding: 5px;">
+                        <img src="https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/incoming/ton/e6b249d6-d7e6-48aa-a84b-7723822fa8ef/flag-visa.svg" 
+                             alt="Visa" style="max-width: 100%; max-height: 100%;">
+                    </div>
+                    
+                    <!-- Mastercard -->
+                    <div class="payment-icon" style="width: 50px; height: 32px; background-color: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; padding: 5px;">
+                        <img src="https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/incoming/ton/d57be004-17fe-45c6-9f96-496b1120e0d3/flag-mastercard.svg" 
+                             alt="Mastercard" style="max-width: 100%; max-height: 100%;">
+                    </div>
+                    
+                    <!-- Elo -->
+                    <div class="payment-icon" style="width: 50px; height: 32px; background-color: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; padding: 5px;">
+                        <img src="https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/incoming/ton/a25181f4-82d7-4534-a903-1aef38a21b6d/flag-elo.svg" 
+                             alt="Elo" style="max-width: 100%; max-height: 100%;">
+                    </div>
+                    
+                    <!-- PIX -->
+                    <div class="payment-icon" style="width: 50px; height: 32px; background-color: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; padding: 5px;">
+                        <img src="https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/incoming/ton/ce92f252-49c2-40b4-a316-9fcae30ecbc1/flag-pix.svg" 
+                             alt="PIX" style="max-width: 100%; max-height: 100%;">
+                    </div>
+                    
+                    <!-- Apple Pay -->
+                    <div class="payment-icon" style="width: 50px; height: 32px; background-color: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; padding: 5px;">
+                        <img src="https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/incoming/ton/fb9c9c47-af9b-4cee-aa00-345c277f6e49/flag-apple-pay.svg" 
+                             alt="Apple Pay" style="max-width: 100%; max-height: 100%;">
+                    </div>
+                    
+                    <!-- Google Pay -->
+                    <div class="payment-icon" style="width: 50px; height: 32px; background-color: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; padding: 5px;">
+                        <img src="https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/incoming/ton/8067d7c4-a20f-416e-9c94-af907a4fade0/flag-google-pay.svg" 
+                             alt="Google Pay" style="max-width: 100%; max-height: 100%;">
+                    </div>
+                    
+                    <!-- Samsung Pay -->
+                    <div class="payment-icon" style="width: 50px; height: 32px; background-color: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; padding: 5px;">
+                        <img src="https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/incoming/ton/9076e148-f7f2-40a9-9955-a7cfef82b785/flag-samsung-pay.svg" 
+                             alt="Samsung Pay" style="max-width: 100%; max-height: 100%;">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <p style="margin-top: 20px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.8);">Camarim © 2025 - Todos os direitos reservados.</p>
         </div>
-    </footer>
+    </div>
+</footer>
 
     <script>
         // ============================================
