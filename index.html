@@ -1051,6 +1051,64 @@
                 font-size: 1.3rem;
             }
         }
+
+/* Botão Voltar ao Topo */
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top.visible {
+    opacity: 0.8;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    opacity: 1;
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsividade para o botão */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .back-to-top {
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -1227,6 +1285,14 @@
             <!-- Copyright -->
             <p style="margin-top: 20px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.8);">Camarim © 2025 - Todos os direitos reservados.</p>
         </div>
+
+        <!-- Adicione este HTML no final do <body>, antes do </body> -->
+
+<!-- Botão Voltar ao Topo -->
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
     </div>
 </footer>
 
@@ -2270,8 +2336,40 @@
             }
         }
         
+
+// ============================================
+// FUNCIONALIDADE DO BOTÃO "VOLTAR AO TOPO"
+// ============================================
+
+// Elemento do botão
+const backToTopBtn = document.getElementById('backToTop');
+
+// Função para mostrar/ocultar o botão baseado na posição de rolagem
+function toggleBackToTopButton() {
+    if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+    } else {
+        backToTopBtn.classList.remove('visible');
+    }
+}
+
+// Função para voltar ao topo suavemente
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Event listeners
+window.addEventListener('scroll', toggleBackToTopButton);
+backToTopBtn.addEventListener('click', scrollToTop);
+
+// Inicializar estado do botão
+toggleBackToTopButton();
         // Inicializar quando o DOM estiver carregado
         document.addEventListener('DOMContentLoaded', init);
+        
     </script>
 </body>
 </html>
