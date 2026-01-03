@@ -334,7 +334,7 @@ const productsData = {
             "id": "CAM-00039",
             "name": "Short Alfaiataria - Tam. G",
             "category": "Clothing",
-            "sellingPrice": 140,
+            "sellingPrice": 60,
             "stock": 3,
             "discount": 0,
             "images": ["39.webp", "39-1.webp"]
