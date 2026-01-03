@@ -280,9 +280,9 @@ const productsData = {
             "id": "CAM-00033",
             "name": "Short Alfaiataria - Tam. M",
             "category": "Clothing",
-            "sellingPrice": 60,
+            "sellingPrice": 70,
             "stock": 3,
-            "discount": 0,
+            "discount": 10,
             "images": ["33.webp", "33-1.webp", "33-2.webp"]
         },
         {
@@ -316,9 +316,9 @@ const productsData = {
             "id": "CAM-00037",
             "name": "Short Alfaiataria - Tam. P",
             "category": "Clothing",
-            "sellingPrice": 60,
+            "sellingPrice": 70,
             "stock": 2,
-            "discount": 0,
+            "discount": 10,
             "images": ["37.webp", "37-1.webp"]
         },
         {
@@ -334,9 +334,9 @@ const productsData = {
             "id": "CAM-00039",
             "name": "Short Alfaiataria - Tam. G",
             "category": "Clothing",
-            "sellingPrice": 60,
+            "sellingPrice": 70,
             "stock": 3,
-            "discount": 0,
+            "discount": 10,
             "images": ["39.webp", "39-1.webp"]
         },
     ]
