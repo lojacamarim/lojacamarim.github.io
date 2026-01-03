@@ -292,7 +292,7 @@ const productsData = {
             "sellingPrice": 100,
             "stock": 1,
             "discount": 0,
-            "images": ["34.webp", "34-1.webp", "34-2.webp"]
+            "images": ["34.webp"]
         },
         {
             "id": "CAM-00035",
