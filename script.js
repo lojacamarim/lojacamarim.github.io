@@ -291,7 +291,7 @@ const productsData = {
             "category": "Clothing",
             "sellingPrice": 100,
             "stock": 1,
-            "discount": 0,
+            "discount": 10,
             "images": ["34.webp"]
         },
         {
