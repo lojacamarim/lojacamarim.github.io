@@ -92,7 +92,7 @@ const productsData = {
             "name": "Papete Tira - Marrom",
             "category": "Shoes",
             "sellingPrice": 160,
-            "stock": 2,
+            "stock": 1,
             "discount": 30,
             "images": ["11.webp"]
         },
