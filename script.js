@@ -46,7 +46,7 @@ const productsData = {
             "id": "CAM-00005",
             "name": "Sandália Grendha - Preto",
             "category": "Shoes",
-            "sellingPrice": 49.90,
+            "sellingPrice": 60,
             "stock": 4,
             "discount": 15,
             "images": ["5.webp"]
@@ -73,9 +73,9 @@ const productsData = {
             "id": "CAM-00008",
             "name": "Sandália Beira Rio - Preto",
             "category": "Shoes",
-            "sellingPrice": 59.90,
+            "sellingPrice": 60,
             "stock": 1,
-            "discount": 18,
+            "discount": 15,
             "images": ["8.webp"]
         },
         {
