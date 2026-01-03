@@ -792,7 +792,7 @@ footer {
 }
 
 .footer-logo-image {
-    max-width: 100px;
+    max-width: 150px;
     height: auto;
     object-fit: contain;
 }
