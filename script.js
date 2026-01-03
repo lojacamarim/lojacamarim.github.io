@@ -109,7 +109,7 @@ const productsData = {
             "id": "CAM-00013",
             "name": "Vizzano Tira Pronta - Preto",
             "category": "Shoes",
-            "sellingPrice": 149.90,
+            "sellingPrice": 150,
             "stock": 1,
             "discount": 15,
             "images": ["13.webp"]
