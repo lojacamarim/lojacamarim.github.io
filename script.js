@@ -309,7 +309,7 @@ const productsData = {
             "category": "Clothing",
             "sellingPrice": 120,
             "stock": 1,
-            "discount": 0,
+            "discount": 20,
             "images": ["36.webp", "36-1.webp"]
         },
         {
