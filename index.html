@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camarim - Catálogo Online</title>
+    <meta name="description" content="Catálogo online da Camarim. Calçados, bolsas, cintos e roupas esportivas com descontos de até 30%. Faça seu pedido pelo WhatsApp!">
+    <!-- Favicon adicionado -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Popup de Promoção -->
+    <div class="promo-popup-overlay" id="promoPopup">
+        <div class="promo-popup">
+            <div class="promo-popup-header">
+                <h3><i class="fas fa-fire"></i> ÚNICA CHANCE DE APROVEITAR!</h3>
+                <button class="close-popup" id="closePromoPopup">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="promo-popup-content">
+                <div class="promo-product" id="promoProductContainer">
+                    <!-- Produto em destaque será inserido aqui via JavaScript -->
+                </div>
+                <p style="color: var(--gray-color); font-size: 0.95rem; text-align: center;">
+                    <i class="fas fa-bolt"></i> Oferta especial por tempo limitado!
+                </p>
+            </div>
+            <div class="promo-popup-footer">
+                <button class="promo-whatsapp-btn" id="promoWhatsAppBtn">
+                    <i class="fab fa-whatsapp"></i> Compre pelo WhatsApp
+                </button>
+                <button class="promo-close-btn" id="closePromoBtn">
+                    Ver outros produtos
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-overlay" id="cartOverlay"></div>
+    
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Meu Carrinho</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            <!-- Itens do carrinho serão inseridos aqui -->
+        </div>
+        
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">R$ 0,00</span>
+            </div>
+            <button class="cart-whatsapp-btn" id="cartWhatsAppBtn">
+                <i class="fab fa-whatsapp"></i> Finalizar Compra pelo WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <!-- Logo principal -->
+                    <img src="logo-camarim.png" alt="Camarim" class="logo-image">
+                </div>
+                <div class="cart-icon" id="openCart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner sem os símbolos de % -->
+    <div class="sale-banner">
+        <p><strong>30% OFF</strong> EM SANDÁLIAS & <strong>25% OFF</strong> EM BOLSAS</p>
+    </div>
+
+    <div class="container">
+        <div class="filters">
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <span class="filter-label">Categoria:</span>
+                    <select id="categoryFilter">
+                        <option value="all">Todas as categorias</option>
+                        <option value="Shoes">Calçados</option>
+                        <option value="Bags">Bolsas</option>
+                        <option value="Belts">Cintos</option>
+                        <option value="Activewear">Roupas Esportivas</option>
+                        <option value="Clothing">Roupas Casuais</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <span class="filter-label">Ordenar por:</span>
+                    <select id="sortFilter">
+                        <option value="name">Nome (A-Z)</option>
+                        <option value="price-low">Preço (menor para maior)</option>
+                        <option value="price-high">Preço (maior para menor)</option>
+                        <option value="discount">Maior desconto</option>
+                    </select>
+                </div>
+                
+                <div class="discount-info">
+                    <i class="fas fa-tag"></i> TODA A LOJA EM <strong>PROMOÇÃO</strong>!
+                </div>
+            </div>
+        </div>
+
+        <div class="products-grid" id="productsContainer">
+            <!-- Produtos serão carregados aqui via JavaScript -->
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- Logo específica para o rodapé -->
+                <div class="footer-logo">
+                    <img src="logo-footer.png" alt="Camarim" class="footer-logo-image">
+                </div>
+                
+                <!-- Texto descritivo -->
+                <p>Catálogo online com as melhores ofertas em calçados, bolsas, roupas e acessórios.</p>
+                <p>Entre em contato via WhatsApp para fazer seu pedido!</p>
+                
+                <!-- Formas de pagamento -->
+                <div class="payment-methods">
+                    <h4>Formas de pagamento</h4>
+                    <div class="payment-icons">
+                        <!-- Visa -->
+                        <div class="payment-icon">
+                            <img src="https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/incoming/ton/e6b249d6-d7e6-48aa-a84b-7723822fa8ef/flag-visa.svg" 
+                                 alt="Visa">
+                        </div>
+                        
+                        <!-- Mastercard -->
+                        <div class="payment-icon">
+                            <img src="https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/incoming/ton/d57be004-17fe-45c6-9f96-496b1120e0d3/flag-mastercard.svg" 
+                                 alt="Mastercard">
+                        </div>
+                        
+                        <!-- Elo -->
+                        <div class="payment-icon">
+                            <img src="https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/incoming/ton/a25181f4-82d7-4534-a903-1aef38a21b6d/flag-elo.svg" 
+                                 alt="Elo">
+                        </div>
+                        
+                        <!-- PIX -->
+                        <div class="payment-icon">
+                            <img src="https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/incoming/ton/ce92f252-49c2-40b4-a316-9fcae30ecbc1/flag-pix.svg" 
+                                 alt="PIX">
+                        </div>
+                        
+                        <!-- Apple Pay -->
+                        <div class="payment-icon">
+                            <img src="https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/incoming/ton/fb9c9c47-af9b-4cee-aa00-345c277f6e49/flag-apple-pay.svg" 
+                                 alt="Apple Pay">
+                        </div>
+                        
+                        <!-- Google Pay -->
+                        <div class="payment-icon">
+                            <img src="https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/incoming/ton/8067d7c4-a20f-416e-9c94-af907a4fade0/flag-google-pay.svg" 
+                                 alt="Google Pay">
+                        </div>
+                        
+                        <!-- Samsung Pay -->
+                        <div class="payment-icon">
+                            <img src="https://sites-cms-deco-prd.s3.us-east-1.amazonaws.com/incoming/ton/9076e148-f7f2-40a9-9955-a7cfef82b785/flag-samsung-pay.svg" 
+                                 alt="Samsung Pay">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Copyright -->
+                <p class="copyright">Camarim © 2025 - Todos os direitos reservados - Atualizado em: 03/01/2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Voltar ao Topo -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
