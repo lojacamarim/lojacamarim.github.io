@@ -142,7 +142,7 @@ const productsData = {
             "name": "Bolsa Beaclea Pequena",
             "category": "Bags",
             "sellingPrice": 100,
-            "stock": 1,
+            "stock": 0,
             "discount": 10,
             "images": ["18.webp"]
         },
