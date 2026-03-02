@@ -115,7 +115,7 @@ const productsData = {
             "name": "Bolsa Coração",
             "category": "Bags",
             "sellingPrice": 120,
-            "stock": 6,
+            "stock": 4,
             "discount": 25,
             "images": ["15.webp"]
         },
