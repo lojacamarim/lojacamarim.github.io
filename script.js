@@ -6,9 +6,9 @@
 const ENABLE_PROMO_POPUP = true; // Mude para false para desativar o popup
 
 // CONFIGURE AQUI: ID do produto em destaque
-// Escolha um ID válido da lista de produtos abaixo
-const PROMO_PRODUCT_ID = "CAM-00015"; // Exemplo: "CAM-00011" (Papete Tira - Marrom)
-// Outras opções: "CAM-00007", "CAM-00015", "CAM-00028", etc.
+// Escolha um ID válido da lista de produtos (Skincare & Maquiagem)
+const PROMO_PRODUCT_ID = "CAM-00015"; // Lip Gloss Criarbelle CRG4
+// Outras opções: "CAM-00004", "CAM-00005", "CAM-00014", etc.
 
 // ============================================
 // NOTA: Os dados dos produtos agora estão no arquivo products.js
@@ -40,22 +40,18 @@ const closePromoBtn = document.getElementById('closePromoBtn');
 const promoWhatsAppBtn = document.getElementById('promoWhatsAppBtn');
 const promoProductContainer = document.getElementById('promoProductContainer');
 
-// Ícones para cada categoria
+// Ícones para cada categoria (atualizado para os novos produtos)
 const categoryIcons = {
-    'Shoes': 'fas fa-shoe-prints',
-    'Bags': 'fas fa-shopping-bag',
-    'Belts': 'fas fa-grip-lines',
-    'Activewear': 'fas fa-tshirt',
-    'Clothing': 'fas fa-tshirt'
+    'Skincare': 'fas fa-spa',
+    'Makeup': 'fas fa-mask',
+    'Acessories': 'fas fa-ring'
 };
 
-// Nomes em português para as categorias
+// Nomes em português para as categorias (atualizado para os novos produtos)
 const categoryNames = {
-    'Shoes': 'Calçados',
-    'Bags': 'Bolsas',
-    'Belts': 'Cintos',
-    'Activewear': 'Roupas Esportivas',
-    'Clothing': 'Roupas Casuais'
+    'Skincare': 'Skincare',
+    'Makeup': 'Maquiagem',
+    'Acessories': 'Acessórios'
 };
 
 // ============================================
@@ -177,14 +173,21 @@ class Carousel {
             slide.appendChild(img);
         });
         
-        // Adicionar botões de navegação
-        const prevBtn = document.createElement('button');
-        prevBtn.className = 'carousel-btn prev';
-        prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
-        
-        const nextBtn = document.createElement('button');
-        nextBtn.className = 'carousel-btn next';
-        nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        // Adicionar botões de navegação (apenas se tiver mais de uma imagem)
+        if (this.images.length > 1) {
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'carousel-btn prev';
+            prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+            
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'carousel-btn next';
+            nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+            
+            this.prevBtn = prevBtn;
+            this.nextBtn = nextBtn;
+            this.container.appendChild(prevBtn);
+            this.container.appendChild(nextBtn);
+        }
         
         // Adicionar indicadores (se tiver mais de uma imagem)
         const indicators = document.createElement('div');
@@ -197,28 +200,20 @@ class Carousel {
                 indicator.setAttribute('data-index', i);
                 indicators.appendChild(indicator);
             }
+            this.container.appendChild(indicators);
+            this.indicators = indicators;
         }
         
         // Adicionar todos os elementos ao container
         this.container.appendChild(slide);
-        this.container.appendChild(prevBtn);
-        this.container.appendChild(nextBtn);
-        if (this.images.length > 1) {
-            this.container.appendChild(indicators);
-        }
-        
-        // Guardar referências
         this.slide = slide;
-        this.prevBtn = prevBtn;
-        this.nextBtn = nextBtn;
-        this.indicators = indicators;
     }
     
     setupEventListeners() {
         if (this.images.length <= 1) return;
         
-        this.prevBtn.addEventListener('click', () => this.prevSlide());
-        this.nextBtn.addEventListener('click', () => this.nextSlide());
+        if (this.prevBtn) this.prevBtn.addEventListener('click', () => this.prevSlide());
+        if (this.nextBtn) this.nextBtn.addEventListener('click', () => this.nextSlide());
         
         // Event listeners para indicadores
         if (this.indicators) {
@@ -282,7 +277,7 @@ function updateURLWithCategory(category) {
 // Função para atualizar a página com base na URL
 function updatePageFromURL() {
     const hash = window.location.hash.substring(1); // Remove o #
-    const validCategories = ['Shoes', 'Bags', 'Belts', 'Activewear', 'Clothing', 'all'];
+    const validCategories = ['Skincare', 'Makeup', 'Acessories', 'all'];
     
     if (hash && validCategories.includes(hash)) {
         // Se houver uma categoria válida no hash
@@ -501,19 +496,29 @@ function sendCartToWhatsApp() {
     
     const phoneNumber = "5563992973240"; // Número para substituir
     
-    let message = `Olá! Gostaria de fazer um pedido com os seguintes produtos:\n\n`;
+    let message = `🛍️ *PEDIDO CAMARIM BEAUTY STORE* 🛍️\n\n`;
+    message += `Olá! Gostaria de fazer um pedido com os seguintes produtos:\n\n`;
     
     cart.forEach(item => {
         const itemTotal = item.price * item.quantity;
-        message += `• ${item.name} (Código: ${item.id})\n`;
+        message += `• *${item.name}* (Código: ${item.id})\n`;
         message += `  Quantidade: ${item.quantity}\n`;
-        message += `  Preço unitário: ${formatPrice(item.price)} (${item.discount}% de desconto)\n`;
-        message += `  Subtotal: ${formatPrice(itemTotal)}\n\n`;
+        message += `  Preço unitário: ${formatPrice(item.price)}`;
+        if (item.discount > 0) {
+            message += ` (${item.discount}% de desconto)`;
+        }
+        message += `\n  Subtotal: ${formatPrice(itemTotal)}\n\n`;
     });
     
     const total = calculateCartTotal();
-    message += `Total da compra: ${formatPrice(total)}\n\n`;
-    message += `Por favor, entre em contato para finalizar o pedido!`;
+    message += `──────────────────\n`;
+    message += `*TOTAL DO PEDIDO: ${formatPrice(total)}*\n\n`;
+    message += `✨ *Formas de pagamento:*\n`;
+    message += `• Pix (10% OFF)\n`;
+    message += `• Cartão de crédito (até 3x sem juros)\n`;
+    message += `• Boleto bancário\n\n`;
+    message += `*Entregamos em toda região!* 🚚\n\n`;
+    message += `Aguardando seu contato para finalizarmos o pedido! 💖`;
     
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, '_blank');
@@ -560,7 +565,7 @@ function getStockText(stock) {
     if (stock === 0) {
         return 'Esgotado';
     } else if (stock <= 2) {
-        return `${stock} uni.`;
+        return `Últimos ${stock} uni.`;
     } else {
         return `${stock} uni.`;
     }
@@ -568,12 +573,20 @@ function getStockText(stock) {
 
 // Gerar mensagem para WhatsApp (produto individual)
 function generateWhatsAppMessage(product, discountedPrice, discountPercent) {
-    const message = `Olá! Tenho interesse no produto: ${product.name} (${product.id}).\n` +
-                   `Preço original: ${formatPrice(product.sellingPrice)}\n` +
-                   `Preço com desconto: ${formatPrice(discountedPrice)}\n` +
-                   `Desconto aplicado: ${discountPercent}%\n` +
-                   `Estoque disponível: ${product.stock} unidades\n` +
-                   `Gostaria de mais informações ou fazer o pedido!`;
+    let message = `Olá! 💖 Tenho interesse no produto:\n\n` +
+                  `*${product.name}*\n` +
+                  `📦 Código: ${product.id}\n` +
+                  `💰 Preço original: ${formatPrice(product.sellingPrice)}\n`;
+    
+    if (discountPercent > 0) {
+        message += `🎉 *PREÇO COM DESCONTO: ${formatPrice(discountedPrice)}*\n`;
+        message += `🏷️ Desconto aplicado: ${discountPercent}%\n`;
+    } else {
+        message += `💰 Preço: ${formatPrice(discountedPrice)}\n`;
+    }
+    
+    message += `📊 Estoque disponível: ${product.stock} unidades\n\n`;
+    message += `Gostaria de mais informações ou fazer o pedido! ✨`;
     
     return encodeURIComponent(message);
 }
@@ -582,6 +595,18 @@ function generateWhatsAppMessage(product, discountedPrice, discountPercent) {
 function renderProducts() {
     // Limpar container
     productsContainer.innerHTML = '';
+    
+    // Verificar se productsData está disponível
+    if (typeof productsData === 'undefined' || !productsData.products) {
+        productsContainer.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 40px; background-color: white; border-radius: var(--border-radius); box-shadow: var(--shadow);">
+                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #ff6b6b; margin-bottom: 20px;"></i>
+                <h3 style="color: var(--secondary-color); margin-bottom: 10px;">Erro ao carregar produtos</h3>
+                <p>Não foi possível carregar a lista de produtos. Verifique se o arquivo products.js foi carregado corretamente.</p>
+            </div>
+        `;
+        return;
+    }
     
     // Filtrar produtos por categoria
     let filteredProducts = productsData.products;
@@ -614,6 +639,7 @@ function renderProducts() {
         const stockIcon = getStockIcon(product.stock);
         const stockText = getStockText(product.stock);
         const imagePaths = getProductImagePaths(product);
+        const categoryIcon = categoryIcons[product.category] || 'fas fa-tag';
         
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
@@ -623,7 +649,10 @@ function renderProducts() {
             <div class="product-image-carousel" id="carousel-${product.id}">
                 <!-- Carrossel será inserido aqui via JavaScript -->
             </div>
-            <div class="category-badge">${categoryNames[product.category] || product.category}</div>
+            <div class="category-badge">
+                <i class="${categoryIcon}"></i> ${categoryNames[product.category] || product.category}
+            </div>
+            ${product.discount > 0 ? `<div class="discount-flag">-${product.discount}%</div>` : ''}
             <div class="product-info">
                 <h3 class="product-name">${product.name}</h3>
                 <div class="product-meta">
@@ -634,17 +663,19 @@ function renderProducts() {
                     </div>
                 </div>
                 <div class="pricing">
-                    <div class="original-price">${formatPrice(product.sellingPrice)}</div>
+                    ${product.discount > 0 ? `<div class="original-price">${formatPrice(product.sellingPrice)}</div>` : ''}
                     <div class="discount-price">${formatPrice(discountedPrice)}</div>
                     
-                    <div class="discount-badge">${product.discount}% OFF - Economize ${formatPrice(discountAmount)}</div>
+                    ${product.discount > 0 ? `
+                        <div class="discount-badge">🎯 Economize ${formatPrice(discountAmount)}</div>
+                    ` : ''}
                     
                     <div class="product-actions">
                         <button class="add-to-cart-btn" data-product-id="${product.id}" ${product.stock === 0 ? 'disabled' : ''}>
                             <i class="fas fa-cart-plus"></i> ${product.stock === 0 ? 'Esgotado' : 'Adicionar ao Carrinho'}
                         </button>
                         <button class="whatsapp-btn" data-product-id="${product.id}">
-                            <i class="fab fa-whatsapp"></i> Comprar no WhatsApp
+                            <i class="fab fa-whatsapp"></i> Comprar agora
                         </button>
                     </div>
                 </div>
@@ -681,7 +712,7 @@ function renderProducts() {
             <div style="grid-column: 1/-1; text-align: center; padding: 40px; background-color: white; border-radius: var(--border-radius); box-shadow: var(--shadow);">
                 <i class="fas fa-search" style="font-size: 3rem; color: var(--gray-color); margin-bottom: 20px;"></i>
                 <h3 style="color: var(--secondary-color); margin-bottom: 10px;">Nenhum produto encontrado</h3>
-                <p>Tente selecionar outra categoria ou alterar os filtros.</p>
+                <p>Tente selecionar outra categoria ou limpar os filtros.</p>
             </div>
         `;
     }
