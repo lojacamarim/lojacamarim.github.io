@@ -49,7 +49,7 @@ const productsData = {
         },
         {
             "id": "CAM-00006",
-            "name": "Vivai Gloss Me Leva (Lote 1)",
+            "name": "Vivai Gloss Me Leva",
             "category": "Makeup",
             "sellingPrice": 12.00,
             "stock": 4,
@@ -67,7 +67,7 @@ const productsData = {
         },
         {
             "id": "CAM-00008",
-            "name": "Vivai Gloss Me Leva (Lote 2)",
+            "name": "Vivai Gloss Me Leva",
             "category": "Makeup",
             "sellingPrice": 12.00,
             "stock": 4,
@@ -130,7 +130,7 @@ const productsData = {
         },
         {
             "id": "CAM-00015",
-            "name": "Lip Gloss Criarbelle CRG4",
+            "name": "Lip Gloss Criarbelle",
             "category": "Makeup",
             "sellingPrice": 7.00,
             "stock": 4,
