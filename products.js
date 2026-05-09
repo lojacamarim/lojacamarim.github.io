@@ -22,10 +22,10 @@ const productsData = {
         },
         {
             "id": "CAM-00003",
-            "name": "Pacote Esponjas Gotas (12 un)",
+            "name": "Esponjas Gotas",
             "category": "Acessories",
             "sellingPrice": 5.00,
-            "stock": 1,
+            "stock": 12,
             "discount": 0,
             "images": ["3.webp"]
         },
@@ -175,10 +175,10 @@ const productsData = {
         },
         {
             "id": "CAM-00020",
-            "name": "Pacote Piranha WL33220 (12 un)",
+            "name": "Piranha de Cabelo Flor",
             "category": "Acessories",
-            "sellingPrice": 4.50,
-            "stock": 1,
+            "sellingPrice": 5.00,
+            "stock": 12,
             "discount": 0,
             "images": ["20.webp"]
         },
